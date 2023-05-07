@@ -1,22 +1,31 @@
 let todo = [];
+// Get the html elements from index.html
 const taskInputEL = document.getElementById("taskInput");
 const dueDateEL = document.getElementById("dueDate");
+// Add a click event listener to this button using a function called addTask
 document.getElementById("addTask").addEventListener("click", addTask);
 let taskItemEL = document.getElementById("taskItem");
 let titleEL = document.getElementById("title");
 
+// Create a function that acts as the event listener
 function addTask () {
+    // Get the value from the input fields
     taskInputEL.value;
     dueDateEL.value;
+    // Calling  the function that creates the tasjs
      renderTask(); 
 }
 
+// The function that creates the task
 function renderTask () {
-    const li = document.createElement("li");
+// Dynamically creating a list and a div and a checkbox
+   const li = document.createElement("li");
    const div = document.createElement("div");
    const paraTask = document.createElement("p");
+   // displays the tasks on the screen
    paraTask.innerText= `Task: ${taskInputEL.value}`; 
    const paraDueDate = document.createElement("p");
+   // displays the tasks on the screen
    paraDueDate.innerText = `Due: ${dueDateEL.value}`;
    const label = document.createElement("label");
    label.setAttribute("for", "Complete");
@@ -30,6 +39,7 @@ function renderTask () {
    div.appendChild(label);
    div.appendChild(checkbox);
    li.appendChild(div);
+   // ties everything beautifully to the list
    taskItemEL.appendChild(li);
   
     taskInputEL.value = "";
