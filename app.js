@@ -7,6 +7,13 @@ document.getElementById("addTask").addEventListener("click", addTask);
 let taskItemEL = document.getElementById("taskItem");
 let titleEL = document.getElementById("title");
 
+let leadsFromStorage = JSON.parse(localStorage.getItem("myTask"));
+console.log(leadsFromStorage);
+
+if (leadsFromStorage) {
+    todo = leadsFromStorage;
+    renderTask();
+}
 // Create a function that acts as the event listener
 function addTask () {
     // Get the value from the input fields
@@ -14,6 +21,8 @@ function addTask () {
     dueDateEL.value;
     // Calling  the function that creates the tasjs
      renderTask(); 
+     localStorage.setItem("myTask", JSON.stringify(todo));
+    titleEL.textContent = "Local Storage is working"
 }
 
 // The function that creates the task
@@ -41,10 +50,12 @@ function renderTask () {
    li.appendChild(div);
    // ties everything beautifully to the list
    taskItemEL.appendChild(li);
-  
+  todo.push(taskItemEL.appendChild(li));
     taskInputEL.value = "";
     dueDateEL.value = "";
+ 
 }
+
 
 // THIS CODE VERSION 1.1 WORKED VERY FINE
 // let getTodoFromLocalStorage = JSON.parse(localStorage.getItem("myTodo"));
